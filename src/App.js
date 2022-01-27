@@ -1,5 +1,11 @@
+import Cart from './components/cart/cart';
+
 function App() {
-  return <div className='App'>기본 셋팅</div>;
+  return (
+    <div>
+      <Cart />
+    </div>
+  );
 }
 
 export default App;
