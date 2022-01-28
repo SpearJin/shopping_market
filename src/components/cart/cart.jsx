@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Product from '../product/product';
+import { StyledCart } from './cart.styled';
 
 const Cart = (props) => {
   const [productInfo, setProductInfo] = useState([
@@ -29,13 +30,14 @@ const Cart = (props) => {
   };
 
   return (
-    <div>
-      <ul>
+    <>
+      <h1>장바구니</h1>
+      <StyledCart>
         {productInfo.map((item) => (
           <Product key={item.id} productInfo={item} onDecreament={onDecreament} onIncreament={onIncreament} />
         ))}
-      </ul>
-    </div>
+      </StyledCart>
+    </>
   );
 };
 

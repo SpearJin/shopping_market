@@ -1,8 +1,9 @@
 import Cart from './components/cart/cart';
+import './app.css';
 
 function App() {
   return (
-    <div>
+    <div className='app'>
       <Cart />
     </div>
   );
