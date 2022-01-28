@@ -5,6 +5,7 @@ export const StyledProduct = styled.li`
   align-items: center;
   justify-content: space-around;
   font-size: 1.5rem;
+  width: 80%;
 
   .name {
     margin-right: 0.4em;
@@ -12,7 +13,6 @@ export const StyledProduct = styled.li`
   }
 
   .btn {
-    margin: 0 0.6em;
     width: 2em;
     height: 2em;
     border-radius: 12px;
@@ -34,6 +34,12 @@ export const StyledProduct = styled.li`
     border-radius: 50%;
     background-color: green;
     color: #fff;
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .price {
+    width: 5.5em;
     font-size: 1.6rem;
     text-align: center;
   }

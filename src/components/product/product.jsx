@@ -14,7 +14,7 @@ const Product = ({ productInfo, onDecreament, onIncreament }) => {
       <button className='btn plus' onClick={() => onIncreament(productInfo)}>
         <i className='fas fa-plus'></i>
       </button>
-      <span>{price}원</span>
+      <span className='price'>{price * count}원</span>
     </StyledProduct>
   );
 };
