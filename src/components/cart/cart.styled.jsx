@@ -12,4 +12,10 @@ export const StyledCart = styled.ul`
   border-radius: 12px;
   background-color: lightgray;
   box-shadow: 2px 3px 4px 3px gray;
+
+  .totalPrice {
+    width: 10em;
+    font-size: 1.2rem;
+    transform: translateX(100%);
+  }
 `;

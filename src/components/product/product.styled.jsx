@@ -39,7 +39,7 @@ export const StyledProduct = styled.li`
   }
 
   .price {
-    width: 5.5em;
+    width: 6em;
     font-size: 1.6rem;
     text-align: center;
   }

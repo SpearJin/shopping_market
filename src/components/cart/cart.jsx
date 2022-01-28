@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Product from '../product/product';
 import { StyledCart } from './cart.styled';
 
@@ -29,6 +29,18 @@ const Cart = (props) => {
     setProductInfo(products);
   };
 
+  useEffect(() => {
+    getTotalPrice();
+  });
+
+  const getTotalPrice = () => {
+    let totalPrice = 0;
+    productInfo.forEach((product) => {
+      totalPrice += product.count * product.price;
+    });
+    return totalPrice;
+  };
+
   return (
     <>
       <h1>장바구니</h1>
@@ -36,6 +48,7 @@ const Cart = (props) => {
         {productInfo.map((item) => (
           <Product key={item.id} productInfo={item} onDecreament={onDecreament} onIncreament={onIncreament} />
         ))}
+        <span className='totalPrice'>총 가격: {getTotalPrice()}원</span>
       </StyledCart>
     </>
   );
