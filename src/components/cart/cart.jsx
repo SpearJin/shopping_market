@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import addComma from '../../unit/addComma';
 import Product from '../product/product';
 import { StyledCart } from './cart.styled';
 
@@ -48,7 +49,7 @@ const Cart = (props) => {
         {productInfo.map((item) => (
           <Product key={item.id} productInfo={item} onDecreament={onDecreament} onIncreament={onIncreament} />
         ))}
-        <span className='totalPrice'>총 가격: {getTotalPrice()}원</span>
+        <span className='totalPrice'>총 가격: {addComma(getTotalPrice())} 원</span>
       </StyledCart>
     </>
   );
