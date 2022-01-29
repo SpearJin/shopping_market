@@ -5,9 +5,9 @@ import { StyledCart } from './cart.styled';
 
 const Cart = (props) => {
   const [productInfo, setProductInfo] = useState([
-    { id: '1', name: '책상', price: 150000, count: 0 },
-    { id: '2', name: '노트북', price: 2000000, count: 0 },
-    { id: '3', name: '침대', price: 300000, count: 0 },
+    { id: '1', name: '아이폰', price: 8900000, count: 0 },
+    { id: '2', name: '맥북', price: 2000000, count: 0 },
+    { id: '3', name: '에어팟', price: 200000, count: 0 },
   ]);
 
   const onIncreament = (product) => {
