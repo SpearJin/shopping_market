@@ -1,14 +1,14 @@
 import Cart from './components/cart/cart';
 import './app.css';
 import Navbar from './components/navbar/navbar';
-import ProductInfo from './components/productInfo/productInfo';
+import ProductList from './components/productList/productList';
 
 function App() {
   return (
     <div className='app'>
       <Navbar />
       {/* <Cart /> */}
-      <ProductInfo />
+      <ProductList />
     </div>
   );
 }

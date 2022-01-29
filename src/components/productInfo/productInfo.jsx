@@ -1,15 +1,19 @@
 import React from 'react';
-import img1 from '../../images/img1.jpeg';
-import { StyledProductInfo } from './product.styled';
+import addComma from '../../unit/addComma';
+import { StyledProductInfo } from './productInfo.styled';
 
-const ProductInfo = (props) => (
-  <StyledProductInfo>
-    <img src={img1} alt='phone' />
-    <div className='product_description'>
-      <span>휴대폰</span>
-      <span>990000원</span>
-    </div>
-  </StyledProductInfo>
-);
+const ProductInfo = ({ product }) => {
+  const { name, productImg, price } = product;
+
+  return (
+    <StyledProductInfo>
+      <img src={productImg} alt='phone' />
+      <div className='product_description'>
+        <span className='name'>{name}</span>
+        <span className='price'>{addComma(price)}원</span>
+      </div>
+    </StyledProductInfo>
+  );
+};
 
 export default ProductInfo;
