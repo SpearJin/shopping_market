@@ -1,18 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import addComma from '../../unit/addComma';
 import Product from '../product/product';
+import { productData } from '../../data/productData.js';
 import { StyledCart } from './cart.styled';
 
 const Cart = (props) => {
-  const [productInfo, setProductInfo] = useState([
-    { id: '1', name: '아이폰', price: 9900000, count: 0 },
-    { id: '2', name: '맥북', price: 2000000, count: 0 },
-    { id: '3', name: '에어팟', price: 200000, count: 0 },
-  ]);
+  const [productInfo, setProductInfo] = useState(productData);
 
   const onIncreament = (product) => {
+    console.log(product);
     const products = productInfo.map((item) => {
-      if (product.id === item.id) {
+      if (product._id === item._id) {
         item.count = item.count >= 9 ? 9 : item.count + 1;
       }
       return item;
@@ -22,7 +20,7 @@ const Cart = (props) => {
 
   const onDecreament = (product) => {
     const products = productInfo.map((item) => {
-      if (product.id === item.id) {
+      if (product._id === item._id) {
         item.count = item.count <= 0 ? 0 : item.count - 1;
       }
       return item;
@@ -47,7 +45,7 @@ const Cart = (props) => {
       <h1>장바구니</h1>
       <StyledCart>
         {productInfo.map((item) => (
-          <Product key={item.id} productInfo={item} onDecreament={onDecreament} onIncreament={onIncreament} />
+          <Product key={item._id} productInfo={item} onDecreament={onDecreament} onIncreament={onIncreament} />
         ))}
         <span className='totalPrice'>총 가격: {addComma(getTotalPrice())} 원</span>
       </StyledCart>
