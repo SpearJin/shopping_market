@@ -6,6 +6,8 @@ export const StyledProductInfo = styled.li`
   justify-content: center;
   width: 80%;
   padding: 1em;
+  margin: 1em 0;
+  cursor: pointer;
   & > img {
     width: 200px;
     height: 200px;

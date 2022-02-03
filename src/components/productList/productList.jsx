@@ -5,14 +5,13 @@ import ProductInfo from '../productInfo/productInfo';
 import { StyledProductList } from './productList.styled.jsx';
 
 const ProductList = (props) => {
-  const [detailProduct, setDetailProduct] = useState('dsds');
-
+  const [detailProduct, setDetailProduct] = useState(null);
   return (
     <StyledProductList>
       {productData.map((product) => (
-        <ProductInfo key={product._id} product={product} />
+        <ProductInfo key={product._id} product={product} onClick={() => setDetailProduct(product)} />
       ))}
-      <ProductDetail detailProduct={detailProduct} setDetailProduct={setDetailProduct} />
+      {detailProduct && <ProductDetail detailProduct={detailProduct} setDetailProduct={setDetailProduct} />}
     </StyledProductList>
   );
 };
