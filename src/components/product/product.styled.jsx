@@ -7,9 +7,16 @@ export const StyledProduct = styled.li`
   font-size: 1.5rem;
   width: 80%;
 
+  .btn_container {
+    display: flex;
+    justify-content: space-around;
+    padding: 2em;
+  }
+
   .name {
-    margin-right: 0.4em;
+    width: 4.5em;
     font-size: 3rem;
+    text-align: center;
   }
 
   .btn {
@@ -31,6 +38,7 @@ export const StyledProduct = styled.li`
     width: 2.5rem;
     height: 2.5rem;
     line-height: 2.5rem;
+    margin: 0 0.5em;
     border-radius: 50%;
     background-color: green;
     color: #fff;

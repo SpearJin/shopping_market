@@ -5,7 +5,7 @@ import { StyledCart } from './cart.styled';
 
 const Cart = (props) => {
   const [productInfo, setProductInfo] = useState([
-    { id: '1', name: '아이폰', price: 8900000, count: 0 },
+    { id: '1', name: '아이폰', price: 9900000, count: 0 },
     { id: '2', name: '맥북', price: 2000000, count: 0 },
     { id: '3', name: '에어팟', price: 200000, count: 0 },
   ]);
