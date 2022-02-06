@@ -22,7 +22,7 @@ export const StyledDetailInfo = styled.div`
   border-radius: 6px;
   background-color: white;
   transform: translate(-50%, -50%);
-  > button {
+  > .detail_cancle {
     position: absolute;
     top: 0;
     right: 0;
@@ -45,6 +45,23 @@ export const StyledDetailInfo = styled.div`
     }
     > .name {
       font-size: 2.5rem;
+    }
+  }
+  > .detail_btns {
+    display: flex;
+    justify-content: space-around;
+    > .btn {
+      width: 70px;
+      height: 50px;
+      margin: 0 5px;
+      border-radius: 12px;
+      border: transparent;
+      background-color: goldenrod;
+      color: #fff;
+      cursor: pointer;
+    }
+    > .btn:hover {
+      opacity: 0.8;
     }
   }
 `;
