@@ -4,15 +4,9 @@ import ProductDetail from '../productDetail/productDetail.jsx';
 import ProductInfo from '../productInfo/productInfo';
 import { StyledProductList } from './productList.styled.jsx';
 
-const ProductList = (props) => {
+const ProductList = () => {
   const [productList, setProductList] = useState(productData);
   const [detailProduct, setDetailProduct] = useState(null);
-
-  const onClickDelete = (product) => {
-    const products = productList.filter((item) => item._id !== product._id);
-    setDetailProduct(null);
-    setProductList(products);
-  };
 
   return (
     <StyledProductList>
@@ -23,7 +17,8 @@ const ProductList = (props) => {
         <ProductDetail
           detailProduct={detailProduct}
           setDetailProduct={setDetailProduct}
-          onClickDelete={onClickDelete}
+          productList={productList}
+          setProductList={setProductList}
         />
       )}
     </StyledProductList>

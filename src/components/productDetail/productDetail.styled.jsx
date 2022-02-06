@@ -39,6 +39,14 @@ export const StyledDetailInfo = styled.div`
     justify-content: space-around;
     width: 50%;
     height: 50%;
+    > input {
+      height: 35px;
+      border: 1px solid lightgray
+      border-radius: 8px;
+      font-size: 1rem;
+      text-align: center;
+      outline: none;
+    }
     > span {
       display: block;
       font-size: 1.5rem;
