@@ -9,7 +9,7 @@ const ProductList = (props) => {
   const [detailProduct, setDetailProduct] = useState(null);
 
   const onClickDelete = (product) => {
-    const products = productData.filter((item) => item._id !== product._id);
+    const products = productList.filter((item) => item._id !== product._id);
     setDetailProduct(null);
     setProductList(products);
   };
