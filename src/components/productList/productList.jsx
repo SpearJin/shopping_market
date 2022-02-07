@@ -8,6 +8,7 @@ const ProductList = () => {
   const [productList, setProductList] = useState(productData);
   const [detailProduct, setDetailProduct] = useState(null);
 
+  console.log(productList);
   return (
     <StyledProductList>
       {productList.map((product) => (

@@ -4,9 +4,10 @@ export const StyledProductInfo = styled.li`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40%;
+  width: 50%;
   padding: 0.5em 3em;
-  margin-top: 1em;
+
+  margin: 1em;
   border-radius: 12px;
   border: 1px solid lightgray;
   cursor: pointer;

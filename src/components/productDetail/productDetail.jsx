@@ -11,6 +11,22 @@ const ProductDetail = ({ detailProduct, setDetailProduct, productList, setProduc
 
   const isDisplayNone = detailProduct === null;
 
+  const onClickCreate = () => {
+    const products = [
+      ...productList,
+      {
+        _id: Date.now(),
+        productImg: img,
+        name,
+        detail,
+        price,
+        count: 0,
+      },
+    ];
+    setProductList(products);
+    setDetailProduct(null);
+  };
+
   // 상품 수정
   const onClickUpdate = () => {
     const products = productList.map((item) => {
@@ -47,6 +63,9 @@ const ProductDetail = ({ detailProduct, setDetailProduct, productList, setProduc
         <span className='price'>{addComma(price)}원</span>
       </div>
       <div className='detail_btns'>
+        <button className='btn' onClick={() => setCurrentState('create')}>
+          추가
+        </button>
         <button className='btn' onClick={() => setCurrentState('update')}>
           수정
         </button>
@@ -72,14 +91,36 @@ const ProductDetail = ({ detailProduct, setDetailProduct, productList, setProduc
         <button className='btn' onClick={onClickUpdate}>
           완료
         </button>
-        <button className='btn' onClick={setCurrentState}>
+        <button className='btn' onClick={() => setCurrentState(null)}>
           취소
         </button>
       </div>
     </>
   );
 
-  const renderState = currentState === 'update' ? updateState : defaultState;
+  const createState = (
+    <>
+      <button className='detail_cancle' onClick={() => setDetailProduct(null)}>
+        X
+      </button>
+      <div className='info update'>
+        <input type='text' placeholder='이미지 주소' onChange={(e) => setImg(e.target.value)} />
+        <input type='text' placeholder='상품명' onChange={(e) => setName(e.target.value)} />
+        <input type='text' placeholder='상품정보' onChange={(e) => setDetail(e.target.value)} />
+        <input type='text' placeholder='가격' onChange={(e) => setPrice(e.target.value)} />
+      </div>
+      <div className='detail_btns'>
+        <button className='btn' onClick={onClickCreate}>
+          완료
+        </button>
+        <button className='btn' onClick={() => setCurrentState(null)}>
+          취소
+        </button>
+      </div>
+    </>
+  );
+
+  const renderState = currentState === 'update' ? updateState : currentState === 'create' ? createState : defaultState;
 
   return (
     <StyledProductDetail isDisplayNone={isDisplayNone}>
