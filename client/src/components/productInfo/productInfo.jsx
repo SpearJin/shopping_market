@@ -3,13 +3,13 @@ import addComma from '../../unit/addComma';
 import { StyledProductInfo } from './productInfo.styled';
 
 const ProductInfo = ({ product, onClick }) => {
-  const { name, productImg, price } = product;
+  const { title, imgLink, price } = product;
 
   return (
     <StyledProductInfo onClick={onClick}>
-      <img src={productImg} alt='phone' />
+      <img src={imgLink} alt='phone' />
       <div className='product_description'>
-        <span className='name'>{name}</span>
+        <span className='name'>{title}</span>
         <span className='price'>{addComma(price)}원</span>
       </div>
     </StyledProductInfo>
