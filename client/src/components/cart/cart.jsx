@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
+import useApiCall from '../../hooks/useApiCall';
 import addComma from '../../unit/addComma';
 import Product from '../product/product';
-import { productData } from '../../data/productData.js';
 import { StyledCart } from './cart.styled';
 
-const Cart = (props) => {
-  const [productInfo, setProductInfo] = useState(productData);
+const Cart = () => {
+  const [productInfo, setProductInfo] = useState(null);
+  const [payload, loading, error] = useApiCall('http://localhost:4000/product');
 
   const onIncreament = (product) => {
-    console.log(product);
     const products = productInfo.map((item) => {
       if (product._id === item._id) {
         item.count = item.count >= 9 ? 9 : item.count + 1;
@@ -28,17 +28,34 @@ const Cart = (props) => {
     setProductInfo(products);
   };
 
-  useEffect(() => {
-    getTotalPrice();
-  });
-
   const getTotalPrice = () => {
+    if (!productInfo) {
+      return;
+    }
     let totalPrice = 0;
     productInfo.forEach((product) => {
       totalPrice += product.count * product.price;
     });
     return totalPrice;
   };
+
+  useEffect(() => {
+    getTotalPrice();
+  });
+
+  useEffect(() => {
+    setProductInfo(payload);
+  }, [payload]);
+
+  if (loading) {
+    return <>로딩중...</>;
+  }
+  if (error) {
+    return <>{error.message}</>;
+  }
+  if (!productInfo) {
+    return <></>;
+  }
 
   return (
     <>

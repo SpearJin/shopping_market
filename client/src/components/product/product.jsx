@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyledProduct } from './product.styled';
 import addComma from '../../unit/addComma.js';
 
 const Product = ({ productInfo, onDecreament, onIncreament }) => {
-  const { name, price, count } = productInfo;
+  const { title, price, count } = productInfo;
 
   return (
     <StyledProduct>
-      <span className='name'>{name}</span>
+      <span className='name'>{title}</span>
       <div className='btn_container'>
         <button className='btn minus' onClick={() => onDecreament(productInfo)}>
           <i className='fas fa-minus'></i>

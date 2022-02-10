@@ -13,6 +13,10 @@ const ProductSchema = new Schema({
   price: {
     type: Number,
   },
+  count: {
+    type: Number,
+    default: 0,
+  },
 });
 
 module.exports = model('product', ProductSchema);
