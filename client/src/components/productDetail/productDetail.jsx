@@ -1,54 +1,45 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import addComma from '../../unit/addComma';
 import { StyledDetailInfo, StyledProductDetail } from './productDetail.styled';
 
-const ProductDetail = ({ detailProduct, setDetailProduct, productList, setProductList }) => {
+const ProductDetail = ({ detailProduct, setDetailProduct, productList, setProductList, fetchData }) => {
   const [currentState, setCurrentState] = useState(null);
-  const [name, setName] = useState(detailProduct.name);
-  const [img, setImg] = useState(detailProduct.productImg);
+  const [name, setName] = useState(detailProduct.title);
+  const [img, setImg] = useState(detailProduct.imgLink);
   const [detail, setDetail] = useState(detailProduct.detail);
   const [price, setPrice] = useState(detailProduct.price);
 
   const isDisplayNone = detailProduct === null;
 
-  const onClickCreate = () => {
-    const products = [
-      ...productList,
-      {
-        _id: Date.now(),
-        productImg: img,
-        name,
-        detail,
-        price,
-        count: 0,
-      },
-    ];
-    setProductList(products);
+  const onClickCreate = async () => {
+    await axios.post('http://localhost:4000/product', {
+      title: name,
+      imgLink: img,
+      detail,
+      price,
+    });
+    fetchData();
     setDetailProduct(null);
   };
 
   // 상품 수정
-  const onClickUpdate = () => {
-    const products = productList.map((item) => {
-      if (detailProduct._id === item._id) {
-        return {
-          ...item,
-          name,
-          detail,
-          price,
-        };
-      }
-      return item;
+  const onClickUpdate = async () => {
+    await axios.put(`http://localhost:4000/product/${detailProduct._id}`, {
+      title: name,
+      imgLink: img,
+      detail,
+      price,
     });
-    setProductList(products);
-    setCurrentState(null);
+    fetchData();
+    setDetailProduct(null);
   };
 
   // 상품 삭제
-  const onClickDelete = () => {
-    const products = productList.filter((item) => item._id !== detailProduct._id);
+  const onClickDelete = async () => {
+    await axios.delete(`http://localhost:4000/product/${detailProduct._id}`);
+    fetchData();
     setDetailProduct(null);
-    setProductList(products);
   };
 
   const defaultState = (

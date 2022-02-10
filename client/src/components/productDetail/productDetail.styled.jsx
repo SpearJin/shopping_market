@@ -31,6 +31,7 @@ export const StyledDetailInfo = styled.div`
   > img {
     width: 300px;
     height: 300px;
+    object-fit: cover;
   }
   > .info {
     display: flex;

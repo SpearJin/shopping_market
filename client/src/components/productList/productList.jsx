@@ -35,6 +35,7 @@ const ProductList = () => {
           setDetailProduct={setDetailProduct}
           productList={productList}
           setProductList={setProductList}
+          fetchData={fetchData}
         />
       )}
     </StyledProductList>
