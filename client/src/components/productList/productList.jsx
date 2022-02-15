@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 // import { productData } from '../../data/productData.js';
 import useApiCall from '../../hooks/useApiCall.js';
+import ProductAdd from '../productAdd/productAdd.jsx';
 import ProductDetail from '../productDetail/productDetail.jsx';
 import ProductInfo from '../productInfo/productInfo';
 import { StyledProductList } from './productList.styled.jsx';
@@ -8,6 +9,7 @@ import { StyledProductList } from './productList.styled.jsx';
 const ProductList = () => {
   const [productList, setProductList] = useState(null);
   const [detailProduct, setDetailProduct] = useState(null);
+  const [addProduct, setAddProduct] = useState(true);
   const [payload, loading, error, fetchData] = useApiCall('http://localhost:4000/product');
 
   useEffect(() => {
@@ -38,6 +40,8 @@ const ProductList = () => {
           fetchData={fetchData}
         />
       )}
+      <ProductAdd fetchData={fetchData} addProduct={addProduct} setAddProduct={setAddProduct} />
+      <button onClick={() => setAddProduct(false)}>상품추가</button>
     </StyledProductList>
   );
 };

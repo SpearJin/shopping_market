@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledProductDetail = styled.div`
+export const StyledProductAdd = styled.div`
   display: ${({ isDisplayNone }) => (isDisplayNone ? 'none' : 'block')};
   position: absolute;
   top: 0;
@@ -8,32 +8,25 @@ export const StyledProductDetail = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
-`;
-
-export const StyledDetailInfo = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 85%;
-  height: 85%;
-  border-radius: 6px;
-  background-color: white;
-  transform: translate(-50%, -50%);
-  > .detail_cancle {
+  > .productAdd_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    top: 0;
-    right: 0;
-    cursor: pointer;
-  }
-  > img {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-  }
-  > .info {
+    left: 50%;
+    top: 50%;
+    width: 85%;
+    height: 85%;
+    border-radius: 6px;
+    background-color: white;
+    transform: translate(-50%, -50%);
+    > .detail_cancle {
+      position: absolute;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+    }
+    > .info {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -42,18 +35,11 @@ export const StyledDetailInfo = styled.div`
     height: 50%;
     > input {
       height: 35px;
-      border: 1px solid lightgray;
+      border: 1px solid lightgray
       border-radius: 8px;
       font-size: 1rem;
       text-align: center;
       outline: none;
-    }
-    > span {
-      display: block;
-      font-size: 1.5rem;
-    }
-    > .name {
-      font-size: 2.5rem;
     }
   }
   > .detail_btns {
