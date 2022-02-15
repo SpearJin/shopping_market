@@ -4,7 +4,7 @@ export const StyledCart = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   padding-left: 0;
   margin: 0;
   width: 80%;
