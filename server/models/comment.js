@@ -9,4 +9,4 @@ const CommentSchema = new Schema({
   },
 });
 
-module.exports = model{ 'comment', CommentSchema };
+module.exports = model('comment', CommentSchema);
