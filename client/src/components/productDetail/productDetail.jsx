@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import addComma from '../../unit/addComma';
 import { StyledDetailInfo, StyledProductDetail } from './productDetail.styled';
+import ProductComment from '../productComment/productComment';
 
 const ProductDetail = ({ detailProduct, setDetailProduct, productList, setProductList, fetchData }) => {
   const [currentState, setCurrentState] = useState(null);
@@ -79,7 +80,10 @@ const ProductDetail = ({ detailProduct, setDetailProduct, productList, setProduc
 
   return (
     <StyledProductDetail isDisplayNone={isDisplayNone}>
-      <StyledDetailInfo>{renderState}</StyledDetailInfo>
+      <StyledDetailInfo>
+        {renderState}
+        <ProductComment />
+      </StyledDetailInfo>
     </StyledProductDetail>
   );
 };
