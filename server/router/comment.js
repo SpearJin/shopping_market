@@ -15,7 +15,7 @@ router.post('/:productId', async (req, res) => {
   const { comment } = req.body;
   const commentModel = await CommentModel.findOne({ productId: id }).exec();
 
-  if (!commentModel) {
+  if (commentModel === null) {
     await CommentModel.create({
       productId: id,
       comment: [comment],
@@ -39,7 +39,7 @@ router.put('/:productId', async (req, res) => {
 });
 
 // 댓글 삭제
-router.delete('/:id/:index', (req, res) => {
+router.delete('/:id/:index', async (req, res) => {
   const { id, index } = req.params;
   const commentModel = await CommentModel.findOne({ productId: id }).exec();
 
@@ -47,4 +47,5 @@ router.delete('/:id/:index', (req, res) => {
   await CommentModel.updateOne({ productId: id }, { comment: [...commentModel.comment] });
   res.send('delete comment');
 });
+
 module.exports = router;

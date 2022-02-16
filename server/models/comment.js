@@ -5,7 +5,7 @@ const CommentSchema = new Schema({
     type: String,
   },
   comment: {
-    type: String,
+    type: Array,
   },
 });
 

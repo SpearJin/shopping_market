@@ -1,37 +1,44 @@
+import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import { StyledComment } from './comment.styled';
 
-const Comment = ({ comment, setComments, comments }) => {
+const Comment = ({ comment, index, setComments, comments, productId, fetchDataComment }) => {
   const [commentPage, setCommentPage] = useState('comment');
   const update = useRef(null);
-  const word = comment.comment;
 
-  const onClickUpdate = () => {
+  const onClickUpdate = async () => {
     const value = update.current.value;
     if (!value) {
       return;
     }
-    const newComments = comments.map((item) => {
-      if (item.id === comment.id) {
-        return {
-          ...comment,
-          comment: value,
-        };
-      }
-      return item;
+    await axios.put(`http://localhost:4000/comment/${productId}`, {
+      comment: value,
+      index,
     });
-    setComments(newComments);
+    fetchDataComment();
     setCommentPage('comment');
   };
 
-  const onClickDelete = () => {
-    const newComments = comments.filter((item) => item.id !== comment.id);
-    setComments(newComments);
+  // const onClickAdd = async (e) => {
+  //   e.preventDefault();
+  //   const value = currentComment.current.value;
+  //   if (!value) {
+  //     return;
+  //   }
+  //   await axios.post(`http://localhost:4000/comment/${productId}`, {
+  //     comment: value,
+  //   });
+  //   fetchDataComment();
+  // };
+
+  const onClickDelete = async () => {
+    await axios.delete(`http://localhost:4000/comment/${productId}/${index}`);
+    fetchDataComment();
   };
 
   const updateComment = (
     <>
-      <input className='update_input' ref={update} type='text' placeholder={word} />
+      <input className='update_input' ref={update} type='text' placeholder={comment} />
       <div className='update_btns'>
         <button className='update_btn btn' onClick={onClickUpdate}>
           완료
@@ -45,7 +52,7 @@ const Comment = ({ comment, setComments, comments }) => {
 
   const infoComment = (
     <>
-      <span>{word}</span>
+      <span>{comment}</span>
       <div className='info_btns'>
         <button className='info_btn btn' onClick={() => setCommentPage('update')}>
           수정

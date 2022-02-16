@@ -4,7 +4,7 @@ import addComma from '../../unit/addComma';
 import { StyledDetailInfo, StyledProductDetail } from './productDetail.styled';
 import ProductComment from '../productComment/productComment';
 
-const ProductDetail = ({ detailProduct, setDetailProduct, productList, setProductList, fetchData }) => {
+const ProductDetail = ({ detailProduct, setDetailProduct, fetchData }) => {
   const [currentState, setCurrentState] = useState(null);
   const [name, setName] = useState(detailProduct.title);
   const [img, setImg] = useState(detailProduct.imgLink);
@@ -82,7 +82,7 @@ const ProductDetail = ({ detailProduct, setDetailProduct, productList, setProduc
     <StyledProductDetail isDisplayNone={isDisplayNone}>
       <StyledDetailInfo>
         {renderState}
-        <ProductComment />
+        <ProductComment productId={detailProduct._id} />
       </StyledDetailInfo>
     </StyledProductDetail>
   );

@@ -1,20 +1,38 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Comment from '../comment/comment';
 import { StyledProductComment } from './productComment.styled';
+import useApiCall from '../../hooks/useApiCall';
+import axios from 'axios';
 
-const ProductComment = () => {
-  const [comments, setComments] = useState([]);
+const ProductComment = ({ productId }) => {
+  const [comments, setComments] = useState(null);
+  const [payload, loading, error, fetchDataComment] = useApiCall(`http://localhost:4000/comment/${productId}`);
   let currentComment = useRef(null);
 
-  const onClickAdd = (e) => {
+  useEffect(() => {
+    if (payload?.comment) {
+      setComments(payload.comment);
+    }
+  }, [payload]);
+
+  if (loading) {
+    return <>로딩 중...</>;
+  }
+
+  if (error) {
+    return <>{error.message}</>;
+  }
+
+  const onClickAdd = async (e) => {
     e.preventDefault();
     const value = currentComment.current.value;
     if (!value) {
       return;
     }
-    setComments([{ id: Date.now(), comment: value }, ...comments]);
-    currentComment.current.value = '';
-    currentComment.current.focus();
+    await axios.post(`http://localhost:4000/comment/${productId}`, {
+      comment: value,
+    });
+    fetchDataComment();
   };
 
   const notComment = (
@@ -35,7 +53,15 @@ const ProductComment = () => {
         {!comments || comments.length === 0
           ? notComment
           : comments.map((item, index) => (
-              <Comment key={index} comments={comments} setComments={setComments} comment={item} />
+              <Comment
+                key={index}
+                index={index}
+                comments={comments}
+                setComments={setComments}
+                comment={item}
+                productId={productId}
+                fetchDataComment={fetchDataComment}
+              />
             ))}
       </ul>
     </StyledProductComment>
