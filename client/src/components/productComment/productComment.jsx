@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import Comment from '../comment/comment';
 import { StyledProductComment } from './productComment.styled';
 
-const ProductComment = (props) => {
+const ProductComment = () => {
   const [comments, setComments] = useState([]);
   let currentComment = useRef(null);
 
