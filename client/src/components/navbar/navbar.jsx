@@ -16,7 +16,7 @@ const Navbar = ({ setPage, isLogin, setIsLogin }) => {
   const loginOutPage = (
     <>
       <span className='login_name'>{currentName}님 환영합니다</span>
-      <button onClick={() => setIsDisplay(true)}>로그아웃</button>
+      <button onClick={() => setIsLogin(false)}>로그아웃</button>
     </>
   );
 
