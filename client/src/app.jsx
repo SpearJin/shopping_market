@@ -6,11 +6,13 @@ import { useState } from 'react';
 
 function App() {
   const [page, setPage] = useState('list');
-  const rnderPage = page === 'list' ? <ProductList /> : <Cart />;
+  const [isLogin, setIsLogin] = useState(false);
+  const renderPage = page === 'list' ? <ProductList /> : <Cart />;
+
   return (
     <div className='app'>
-      <Navbar setPage={setPage} />
-      {rnderPage}
+      <Navbar setPage={setPage} isLogin={isLogin} setIsLogin={setIsLogin} />
+      {isLogin ? renderPage : <p className='isLogin'>로그인 하세요...</p>}
     </div>
   );
 }

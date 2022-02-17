@@ -3,9 +3,10 @@ import styled from 'styled-components';
 export const StyledNavbar = styled.nav`
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   width: 100%;
   height: 50px;
+  padding: 0 0.5em;
   background-color: #333333;
   color: #fff;
   text-align: center;
