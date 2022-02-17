@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledNavbar = styled.nav`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: ${({ isLogin }) => (isLogin ? 'space-between' : 'flex-end')};
   width: 100%;
   height: 50px;
   padding: 0 0.5em;
@@ -13,6 +13,7 @@ export const StyledNavbar = styled.nav`
   font-size: 1.2rem;
   button {
     margin: 0 0.2em;
+
     border-radius: 12px;
     background-color: lightgray;
     font-size: 0.8rem;
@@ -20,5 +21,8 @@ export const StyledNavbar = styled.nav`
   }
   button:hover {
     opacity: 0.8;
+  }
+  .login_name {
+    font-size: 1rem;
   }
 `;

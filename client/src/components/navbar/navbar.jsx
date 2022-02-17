@@ -2,20 +2,45 @@ import React, { useState } from 'react';
 import Login from '../login/login';
 import { StyledNavbar } from './navbar.styled';
 
-const Navbar = ({ setPage, isLogin }) => {
+const Navbar = ({ setPage, isLogin, setIsLogin }) => {
+  const [user, setUser] = useState([]);
+  const [currentName, setCurrentName] = useState('');
   const [isDisplay, setIsDisplay] = useState(false);
 
-  const onClickHanlder = () => {};
+  const loginPage = (
+    <>
+      <button onClick={() => setIsDisplay(true)}>로그인</button>
+    </>
+  );
+
+  const loginOutPage = (
+    <>
+      <span className='login_name'>{currentName}님 환영합니다</span>
+      <button onClick={() => setIsDisplay(true)}>로그아웃</button>
+    </>
+  );
+
+  let renderLogin = isLogin ? loginOutPage : loginPage;
 
   return (
-    <StyledNavbar>
-      <div className='cart_btn'>
-        <button onClick={() => setPage('list')}>상품</button>
-        <button onClick={() => setPage('cart')}>장바구니</button>
-      </div>
+    <StyledNavbar isLogin={isLogin}>
+      {isLogin && (
+        <div className='cart_btn'>
+          <button onClick={() => setPage('list')}>상품</button>
+          <button onClick={() => setPage('cart')}>장바구니</button>
+        </div>
+      )}
       <div className='login_btn'>
-        <button onClick={() => setIsDisplay(true)}>로그인</button>
-        <Login isLogin={isLogin} isDisplay={isDisplay} setIsDisplay={setIsDisplay} />
+        {renderLogin}
+        <Login
+          isLogin={isLogin}
+          isDisplay={isDisplay}
+          setIsDisplay={setIsDisplay}
+          user={user}
+          setUser={setUser}
+          setIsLogin={setIsLogin}
+          setCurrentName={setCurrentName}
+        />
       </div>
     </StyledNavbar>
   );
