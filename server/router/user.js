@@ -22,12 +22,14 @@ router.post('/signup', async (req, res) => {
 
 // 로그인
 router.post('/login', async (req, res) => {
-  const { userId, userPassword } = req.body;
-  const userInfo = await UserModel.findOne({ userId, userPassword });
-  if (userInfo) {
-    res.send(userInfo);
-  } else {
-    res.send('정보가 일치하지 않습니다');
+  try {
+    const { userId, userPassword } = req.body;
+    const userInfo = await UserModel.findOne({ userId, userPassword });
+    if (userInfo) {
+      res.send(userInfo);
+    }
+  } catch (error) {
+    res.send(error);
   }
 });
 

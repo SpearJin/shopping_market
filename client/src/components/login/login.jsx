@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import { StyledLogin } from './login.styled';
 
@@ -11,28 +12,27 @@ const Login = ({ user, setUser, isDisplay, setCurrentName, setIsDisplay, setIsLo
 
   let isDisplayNone = isDisplay;
 
-  const onClickSignUp = () => {
-    const users = [
-      ...user,
-      {
-        userId: userId.current.value,
-        userName: userName.current.value,
-        userPassword: userPassword.current.value,
-        userGender: userPassword.current.value,
-      },
-    ];
-    setUser(users);
+  const onClickSignUp = async () => {
+    await axios.post('http://localhost:4000/user/signup', {
+      userId: userId.current.value,
+      userName: userName.current.value,
+      userPassword: userPassword.current.value,
+      userGender: userPassword.current.value,
+    });
     setCurrentState('login');
   };
 
-  const onClickLogin = () => {
-    user.forEach((item) => {
-      if (item.userId === userId.current.value && item.userPassword === userPassword.current.value) {
-        setCurrentName(item.userName);
-        setIsDisplay(false);
-        setIsLogin(true);
-      }
+  const onClickLogin = async () => {
+    const userInfo = await axios.post('http://localhost:4000/user/login', {
+      userId: userId.current.value,
+      userPassword: userPassword.current.value,
     });
+    console.log(userInfo);
+    if (userInfo) {
+      setCurrentName(userInfo.data.userName);
+      setIsDisplay(false);
+      setIsLogin(true);
+    }
   };
 
   const loginPage = (
