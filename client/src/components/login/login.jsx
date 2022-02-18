@@ -32,6 +32,8 @@ const Login = ({ user, setUser, isDisplay, setCurrentName, setIsDisplay, setIsLo
       setCurrentName(userInfo.data.userName);
       setIsDisplay(false);
       setIsLogin(true);
+    } else {
+      console.log('fdfs');
     }
   };
 
