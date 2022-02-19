@@ -84,4 +84,11 @@ export const StyledLogin = styled.div`
       border: transparent;
     }
   }
+  .error {
+    display: block;
+    width: 100%;
+    height: 0.5em;
+    font-size: 0.8rem;
+    color: red;
+  }
 `;

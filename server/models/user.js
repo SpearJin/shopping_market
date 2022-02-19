@@ -12,6 +12,7 @@ const UserSchema = new Schema({
   },
   userGender: {
     type: String,
+    default: '남',
   },
 });
 
