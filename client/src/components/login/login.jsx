@@ -1,32 +1,33 @@
 import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyledLogin } from './login.styled';
 
 const Login = ({ isDisplay, setCurrentName, setIsDisplay, setIsLogin }) => {
+  const [userId, setUserId] = useState('');
+  const [userName, setUserName] = useState('');
+  const [userPassword, setUserPassword] = useState('');
+  const [userGender, setUserGender] = useState('');
+
   const [currentState, setCurrentState] = useState('login');
   const [error, setError] = useState(null);
-
-  let userId = useRef(null);
-  let userName = useRef(null);
-  let userPassword = useRef(null);
-  let userGender = useRef(null);
 
   let isDisplayNone = isDisplay;
 
   useEffect(() => {
-    userId.current.value = '';
-    userPassword.current.value = '';
+    setUserId('');
+    setUserName('');
+    setUserPassword('');
+    setUserGender('');
     setError(null);
   }, [isDisplay, currentState]);
 
   const onClickSignUp = async () => {
-    console.log(userGender.current.value);
     try {
       await axios.post('http://localhost:4000/user/signup', {
-        userId: userId.current.value,
-        userName: userName.current.value,
-        userPassword: userPassword.current.value,
-        userGender: userPassword.current.textContent,
+        userId,
+        userName,
+        userPassword,
+        userGender,
       });
       setCurrentState('login');
     } catch (error) {
@@ -37,8 +38,8 @@ const Login = ({ isDisplay, setCurrentName, setIsDisplay, setIsLogin }) => {
   const onClickLogin = async () => {
     try {
       const userInfo = await axios.post('http://localhost:4000/user/login', {
-        userId: userId.current.value,
-        userPassword: userPassword.current.value,
+        userId,
+        userPassword,
       });
       console.log(userInfo);
       if (userInfo) {
@@ -47,7 +48,6 @@ const Login = ({ isDisplay, setCurrentName, setIsDisplay, setIsLogin }) => {
         setIsLogin(true);
       }
     } catch (error) {
-      console.log(error.response.data);
       setError(error.response.data);
     }
   };
@@ -56,8 +56,8 @@ const Login = ({ isDisplay, setCurrentName, setIsDisplay, setIsLogin }) => {
     <div className='login'>
       <h3>로그인</h3>
       <label className='login_inputs'>
-        <input placeholder='아이디' ref={userId} />
-        <input type='password' placeholder='비밀번호' ref={userPassword} />
+        <input placeholder='아이디' onChange={(e) => setUserId(e.target.value)} />
+        <input type='password' placeholder='비밀번호' onChange={(e) => setUserPassword(e.target.value)} />
       </label>
       <div>
         <button className='login_btn' onClick={() => setCurrentState('signup')}>
@@ -74,16 +74,16 @@ const Login = ({ isDisplay, setCurrentName, setIsDisplay, setIsLogin }) => {
   const signUpPage = (
     <div className='signup'>
       <h3>회원가입</h3>
-      <label className='signup_inputs'>
-        <input placeholder='아이디' ref={userId} />
-        <input placeholder='닉네임' ref={userName} />
-        <input placeholder='비밀번호' ref={userPassword} />
-      </label>
-      <label name='gender' className='sigup_gender' ref={userGender}>
+      <div className='signup_inputs'>
+        <input placeholder='아이디' onChange={(e) => setUserId(e.target.value)} />
+        <input placeholder='닉네임' onChange={(e) => setUserName(e.target.value)} />
+        <input placeholder='비밀번호' onChange={(e) => setUserPassword(e.target.value)} />
+      </div>
+      <label name='gender' className='sigup_gender' onChange={(e) => setUserGender(e.target.value)}>
         성별:
-        <input type='radio' name='gender' value='남' ref={userGender} />
+        <input type='radio' name='gender' value='남' />
         남
-        <input type='radio' name='gender' value='여' ref={userGender} />여
+        <input type='radio' name='gender' value='여' />여
       </label>
       <div>
         <button className='login_btn' onClick={onClickSignUp}>
