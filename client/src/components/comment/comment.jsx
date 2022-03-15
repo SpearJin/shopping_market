@@ -32,7 +32,7 @@ const Comment = ({ comment, index, setComments, comments, productId, fetchDataCo
   // };
 
   const onClickDelete = async () => {
-    await axios.delete(`http://localhost:4000/comment/${productId}/${index}`);
+    await axios.delete(`/comment/${productId}/${index}`);
     fetchDataComment();
   };
 

@@ -6,7 +6,7 @@ import { StyledCart } from './cart.styled';
 
 const Cart = () => {
   const [productInfo, setProductInfo] = useState(null);
-  const [payload, loading, error] = useApiCall('http://localhost:3000/product');
+  const [payload, loading, error] = useApiCall('/product');
 
   const onIncreament = (product) => {
     const products = productInfo.map((item) => {

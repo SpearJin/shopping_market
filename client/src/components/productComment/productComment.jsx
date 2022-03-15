@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const ProductComment = ({ productId }) => {
   const [comments, setComments] = useState(null);
-  const [payload, loading, error, fetchDataComment] = useApiCall(`http://localhost:3000/comment/${productId}`);
+  const [payload, loading, error, fetchDataComment] = useApiCall(`/comment/${productId}`);
   let currentComment = useRef(null);
 
   useEffect(() => {

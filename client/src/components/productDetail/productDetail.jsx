@@ -15,7 +15,7 @@ const ProductDetail = ({ detailProduct, setDetailProduct, fetchData }) => {
 
   // 상품 수정
   const onClickUpdate = async () => {
-    await axios.put(`http://localhost:3000/product/${detailProduct._id}`, {
+    await axios.put(`/product/${detailProduct._id}`, {
       title: name,
       imgLink: img,
       detail,

@@ -11,7 +11,7 @@ const ProductAdd = ({ addProduct, setAddProduct, fetchData }) => {
   let isDisplayNone = addProduct;
 
   const onClickCreate = async () => {
-    await axios.post('http://localhost:3000/product', {
+    await axios.post('/product', {
       title: name,
       imgLink: img,
       detail,
