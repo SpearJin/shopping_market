@@ -10,7 +10,7 @@ const ProductList = () => {
   const [productList, setProductList] = useState(null);
   const [detailProduct, setDetailProduct] = useState(null);
   const [addProduct, setAddProduct] = useState(true);
-  const [payload, loading, error, fetchData] = useApiCall('http://localhost:4000/product');
+  const [payload, loading, error, fetchData] = useApiCall('http://localhost:3000/product');
 
   useEffect(() => {
     setProductList(payload);

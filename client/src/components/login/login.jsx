@@ -37,11 +37,11 @@ const Login = ({ isDisplay, setCurrentName, setIsDisplay, setIsLogin }) => {
 
   const onClickLogin = async () => {
     try {
-      const userInfo = await axios.post('http://localhost:4000/user/login', {
+      const userInfo = await axios.post('http://localhost:3000/user/login', {
         userId,
         userPassword,
       });
-      console.log(userInfo);
+
       if (userInfo) {
         setCurrentName(userInfo.data.userName);
         setIsDisplay(false);
