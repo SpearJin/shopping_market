@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "CI= react-scripts build"
+    "build": "Creact-scripts build"
   },
   "author": "",
   "license": "ISC",
