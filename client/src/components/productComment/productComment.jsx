@@ -29,7 +29,7 @@ const ProductComment = ({ productId }) => {
     if (!value) {
       return;
     }
-    await axios.post(`http://localhost:4000/comment/${productId}`, {
+    await axios.post(`/comment/${productId}`, {
       comment: value,
     });
     fetchDataComment();

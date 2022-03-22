@@ -11,7 +11,7 @@ const Comment = ({ comment, index, setComments, comments, productId, fetchDataCo
     if (!value) {
       return;
     }
-    await axios.put(`http://localhost:3000/comment/${productId}`, {
+    await axios.put(`/comment/${productId}`, {
       comment: value,
       index,
     });

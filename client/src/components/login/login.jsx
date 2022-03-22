@@ -23,7 +23,7 @@ const Login = ({ isDisplay, setCurrentName, setIsDisplay, setIsLogin }) => {
 
   const onClickSignUp = async () => {
     try {
-      await axios.post('http://localhost:4000/user/signup', {
+      await axios.post('/user/signup', {
         userId,
         userName,
         userPassword,

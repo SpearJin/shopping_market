@@ -27,7 +27,7 @@ const ProductDetail = ({ detailProduct, setDetailProduct, fetchData }) => {
 
   // 상품 삭제
   const onClickDelete = async () => {
-    await axios.delete(`http://localhost:4000/product/${detailProduct._id}`);
+    await axios.delete(`/product/${detailProduct._id}`);
     fetchData();
     setDetailProduct(null);
   };
